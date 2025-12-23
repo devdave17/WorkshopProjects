@@ -14,15 +14,54 @@ typedef struct Student
 
 
 
+
+// taking input as from user
+
+void takingInput(Student *stu,int n)
+{
+    for (int i = 0; i < n; i++)
+    {
+        printf("Enter Name of %d Student",i+1);
+        fget(stu[i].name,50,stdin);
+        
+        printf("Enter Id of %d Student",i+1);
+        scanf("%d",stu[i].id);
+        
+        
+        printf("Enter Batch of %d Student",i+1);
+        fget(stu[i].batch,50,stdin);
+
+        // the loop is used for inner array marks till (0-->4) 5 ele
+        for (int j = 0; j < 5; j++)
+        {
+            printf("Enter marks for %d Subject",i+1);
+            scanf("%d",stu[j].marks);
+        }
+        
+    }
+    
+}
+
+
 int main(){
 
+    int n;
+    printf("Enter number of sutdents :");
+    scanf("%d",&n);
+    
 // here we creating the sutdent obj
-    struct Student s1;
-    // assining the objects
-    s1.id = 10;
-    s1.grade = 'A';
+     struct Student stu[n];
 
-    printf ("%d",s1.id);
-    printf ("%d",s1.grade);
+    // this function will take input form user
+    takingInput(stu,n);
+
+    // assining the objects
+    // s1.id = 10;
+    // s1.grade = 'A';
+
+    // printf ("%d",s1.id);
+    // printf ("%d",s1.grade);
+
+
     return 0;
 }
