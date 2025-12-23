@@ -19,7 +19,9 @@ int main(){
     struct Student s1;
     // assining the objects
     s1.id = 10;
+    s1.grade = 'A';
 
     printf ("%d",s1.id);
+    printf ("%d",s1.grade);
     return 0;
 }
