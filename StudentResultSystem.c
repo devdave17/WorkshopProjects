@@ -13,6 +13,7 @@ typedef struct Student
 } Student;
 
 
+
 int main(){
 
 // here we creating the sutdent obj
