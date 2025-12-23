@@ -21,20 +21,21 @@ void takingInput(Student *stu,int n)
 {
     for (int i = 0; i < n; i++)
     {
-        printf("Enter Name of %d Student",i+1);
-        fget(stu[i].name,50,stdin);
-        
-        printf("Enter Id of %d Student",i+1);
-        scanf("%d",stu[i].id);
-        
-        
-        printf("Enter Batch of %d Student",i+1);
-        fget(stu[i].batch,50,stdin);
+       printf("Enter Id of %d Student: ", i+1);
+scanf("%d", &stu[i].id);
+getchar();   
+
+printf("Enter Name of %d Student: ", i+1);
+fgets(stu[i].name, 50, stdin);
+
+printf("Enter Batch of %d Student: ", i+1);
+fgets(stu[i].batch, 50, stdin);
+
 
         // the loop is used for inner array marks till (0-->4) 5 ele
         for (int j = 0; j < 5; j++)
         {
-            printf("Enter marks for %d Subject",i+1);
+            printf("\nEnter marks for %d Subject: ",i+1);
             scanf("%d",stu[j].marks);
         }
         
@@ -46,7 +47,7 @@ void takingInput(Student *stu,int n)
 int main(){
 
     int n;
-    printf("Enter number of sutdents :");
+    printf("Enter number of sutdents: ");
     scanf("%d",&n);
     
 // here we creating the sutdent obj
