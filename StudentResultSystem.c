@@ -1,18 +1,25 @@
 #include <stdio.h>
 
-struct Student
+
+// there is an main Struture of an students
+typedef struct Student
 {
     char name[50];
-    int Id;
+    int id;
     char batch[50];
-    int marks[];
-    
-
-
-}typedef Student;
+    int marks[5];
+    float totalMarks;
+    char grade;
+} Student;
 
 
 int main(){
-     printf("Hello ");
+
+// here we creating the sutdent obj
+    struct Student s1;
+    // assining the objects
+    s1.id = 10;
+
+    printf ("%d",s1.id);
     return 0;
 }
