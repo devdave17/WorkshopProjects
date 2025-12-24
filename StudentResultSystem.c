@@ -1,10 +1,7 @@
 #include <stdio.h>
-<<<<<<< HEAD
 #include <string.h>
-=======
 #define N 100
-// #define dataSize sizeof(stu)/sizeof(stu[N])
->>>>>>> c5a2b4faa888933cf71b1f91b0deb7c0a546ae24
+
 
 // there is an main Struture of an students
 typedef struct Student
