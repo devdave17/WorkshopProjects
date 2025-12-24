@@ -244,7 +244,7 @@ void printAllData(Student *std, int n){
     for (int i = 0; i < n; i++)
     {
         printf("------------------------------------------------------------------------------------------------------------\n");
-        printf("%-6d %-20.20s %-8.8s %-6c %-6.2f %-6.2f %-6.2f %-7.2f %-6.2f %-10.2f %-15.1f\n", std[i].id,std[i].name,std[i].batch ,std[i].grade,std[i].marks[0],std[i].marks[1],std[i].marks[2],std[i].marks[3],std[i].marks[4], std[i].totalMarks),std[i].percentage;
+        printf("%-6d %-20.20s %-8.8s %-6c %-6.2f %-6.2f %-6.2f %-7.2f %-6.2f %-10.2f %-15.1f\n", std[i].id,std[i].name,std[i].batch ,std[i].grade,std[i].marks[0],std[i].marks[1],std[i].marks[2],std[i].marks[3],std[i].marks[4], std[i].totalMarks,std[i].percentage);
     } 
     printf("----------------------------------------------------------------------------------------------------------------\n");
 }
