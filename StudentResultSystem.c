@@ -1,5 +1,6 @@
 #include <stdio.h>
 #define N 100
+#define dataSize sizeof(stu)/sizeof(stu[0])
 
 // there is an main Struture of an students
 typedef struct Student
@@ -71,6 +72,7 @@ void printAllData(Student *std, int n){
 
 
 void menu(Student *stu){
+
     int option=10;
 
     printf("---------Choose Option To Perform a Task------------------\n");
@@ -101,11 +103,6 @@ void menu(Student *stu){
 
 
 int main(){
-
-
-    
-
-    
     
     // here we creating the sutdent obj
      struct Student stu[N];
