@@ -11,6 +11,7 @@ typedef struct Student
     char batch[50];
     float marks[5];
     float totalMarks;
+    float percentage;
     char grade;
     int os, dsa, cn, maths, progr;
 } Student;
@@ -31,7 +32,7 @@ void removeNewline(char *str)
 
 void defaultData( Student *stu){
 
-     stu[0].id = 202501;
+    stu[0].id = 202501;
     strcpy(stu[0].name, "Musi");
     strcpy(stu[0].batch, "MCA");
     stu[0].grade = 'B';
@@ -124,14 +125,15 @@ void takingInput(Student *stu,int n)
     
 }
 
+
 void printAllData(Student *std, int n){
 
-    printf("---------------------------------------------------------------------------------\n");
-    printf("%-6s %-20.20s %-8.8s %-6s %-6s %-6s %-6s %-7s %-6s\n", "Id","Name","Batch","Grade","OS","DSA","CN","Maths","Progr.");
+    printf("----------------------------------------------------------------------------------------------------------------\n");
+    printf("%-6s %-20.20s %-8.8s %-6s %-6s %-6s %-6s %-7s %-6s %-10s %-10s\n", "Id","Name","Batch","Grade","OS","DSA","CN","Maths","Progr.","totalMarks","percentage");
     for (int i = 0; i < n; i++)
     {
-        printf("---------------------------------------------------------------------------------\n");
-        printf("%-6d %-20.20s %-8.8s %-6c %-6f %-6f %-6f %-7f %-6f\n", std[i].id,std[i].name,std[i].batch ,std[i].grade,std[i].marks[0],std[i].marks[1],std[i].marks[2],std[i].marks[3],std[i].marks[4]);
+        printf("-------------------------------------------------------------------------------------------------------------\n");
+        printf("%-6.2d %-20.20s %-8.8s %-6.2c %-6.2f %-6.2f %-6.2f %-7.2f %-6.2f %-10.2f %-10.2f\n ", std[i].id,std[i].name,std[i].batch ,std[i].grade,std[i].marks[0],std[i].marks[1],std[i].marks[2],std[i].marks[3],std[i].marks[4],std[i].totalMarks,std[i].percentage);
     } 
 }
 
@@ -168,11 +170,12 @@ void menu(Student *stu){
             }
     }
 }
+
 void calculateResult(Student *std,int n){
     int i,j;
     float sum;
     
-     float percentage[n];
+     
     
 
     //total marks
@@ -182,41 +185,38 @@ void calculateResult(Student *std,int n){
      sum=sum+std[i].marks[j];
      }
      std[i].totalMarks=sum;
-     percentage[i]=sum/5;
+     std[i].percentage=sum/5;
 }
     
+ 
  for(int i=0;i<n;i++){
-   
- } 
- for(int i=0;i<n;i++){
-    if(percentage[i]>85 ){
+    if(std[i].percentage>85 ){
     std[i].grade='A';
 
     }
-    else if(percentage[i]>70 ){
+    else if(std[i].percentage>70 ){
         std[i].grade='B';
 
     }
-   else if(percentage[i]>70 ){
+   else if(std[i].percentage>55 ){
         std[i].grade='C';
 
     }
-    else if(percentage[i]>55 ){
+    else if(std[i].percentage>40){
         std[i].grade='D';
 
     }
-    else if(percentage[i]>40 ){
+    else if(std[i].percentage>33){
         std[i].grade='E';
 
     }
-    else if(percentage[i]<33){
+    else if(std[i].percentage>0){
         std[i].grade='F';
 
     }
     }
 
 }
-
 
 int main(){
     int n;
