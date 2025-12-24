@@ -144,16 +144,13 @@ void searchById(Student *stu, int id){
         flag = 1;
     calculateResult(stu, dataSize);
     char subjects[5][15] = {"OS", "DSA", "CN", "Maths", "Programming"};
-
     printf("\n====================================================\n");
     printf("                 STUDENT MARK SHEET                 \n");
     printf("====================================================\n");
-
     printf("Student ID   : %d\n", stu[i].id);
     printf("Name         : %s\n", stu[i].name);
     printf("Batch        : %s\n", stu[i].batch);
     printf("Final Grade  : %c\n", stu[i].grade);
-
     printf("----------------------------------------------------\n");
     printf("%-15s %-15s %-15s\n", "Subject", "Marks", "Grade");
     printf("----------------------------------------------------\n");
@@ -224,7 +221,6 @@ void takingInput(Student *stu,int n)
         fgets(stu[dataSize].batch, 50, stdin);
         removeNewline(stu[dataSize].batch);
 
-
         // the loop is used for inner array marks till (0-->4) 5 ele
         for (int j = 0; j < 5; j++)
         {
@@ -238,7 +234,7 @@ void takingInput(Student *stu,int n)
 
 
 void printAllData(Student *std, int n){
-
+    calculateResult(std, dataSize);
     printf("----------------------------------------------------------------------------------------------------------------\n");
     printf("%-6s %-20.20s %-8.8s %-6s %-6s %-6s %-6s %-7s %-6s %-10s %-10s\n", "Id","Name","Batch","Grade","OS","DSA","CN","Maths","Progr.","TotalMarks","Percentage");
     for (int i = 0; i < n; i++)
