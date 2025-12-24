@@ -219,7 +219,6 @@ void calculateResult(Student *std,int n){
 
 
 int main(){
-<<<<<<< HEAD
     int n;
     printf("Enter number of sutdents: ");
     scanf("%d",&n);
@@ -239,15 +238,12 @@ int main(){
 
     // printf ("%d",s1.id);
     // printf ("%d",s1.grade);
-=======
+
     
     // here we creating the sutdent obj
      struct Student stu[N];
 
     menu(stu);
-    
->>>>>>> c5a2b4faa888933cf71b1f91b0deb7c0a546ae24
-
 
     return 0;
 }
