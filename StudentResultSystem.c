@@ -74,7 +74,7 @@ void calculateResult(Student *std,int n){
 void defaultData(Student *stu){
 
 // Student 0
-stu[0].id = 202501;
+stu[0].id = 202505;
 strcpy(stu[0].name, "Musi");
 strcpy(stu[0].batch, "MCA");
 stu[0].grade = 'B';
@@ -136,6 +136,76 @@ dataSize = 5;
 calculateResult(stu, dataSize);
 }
 
+void searchById(Student *stu, int id){
+    int flag;
+    for (int i = 0; i < dataSize; i++)
+    {
+     if(stu[i].id == id){
+        flag = 1;
+    calculateResult(stu, dataSize);
+    char subjects[5][15] = {"OS", "DSA", "CN", "Maths", "Programming"};
+
+    printf("\n====================================================\n");
+    printf("                 STUDENT MARK SHEET                 \n");
+    printf("====================================================\n");
+
+    printf("Student ID   : %d\n", stu[i].id);
+    printf("Name         : %s\n", stu[i].name);
+    printf("Batch        : %s\n", stu[i].batch);
+    printf("Final Grade  : %c\n", stu[i].grade);
+
+    printf("----------------------------------------------------\n");
+    printf("%-15s %-15s %-15s\n", "Subject", "Marks", "Grade");
+    printf("----------------------------------------------------\n");
+
+    for (int j = 0; j < 5; j++)
+    {
+        char grade;
+        if(stu[i].marks[j]>85 ){
+            grade='A';
+
+    }
+    else if(stu[i].marks[j]>70 ){
+        grade='B';
+
+    }
+   else if(stu[i].marks[j]>55 ){
+        grade='C';
+
+    }
+    else if(stu[i].marks[j]>40){
+        grade='D';
+
+    }
+    else if(stu[i].marks[j]>33){
+        grade='E';
+
+    }
+    else if(stu[i].marks[j]>0){
+        grade='F';
+
+    }
+
+        printf("%-15s %-15.2f %-15c\n", subjects[j], stu[i].marks[j], grade);
+}
+
+    printf("----------------------------------------------------\n");
+    printf("Total Marks  : %.2f\n", stu[i].totalMarks);
+    printf("Percentage   : %.2f %%\n", stu[i].percentage);
+    
+    printf("====================================================\n");
+    break;
+     }else{
+        flag = 0;
+     }   
+    }
+    if (flag == 0)
+    {
+        printf("No Data Found for ID: %d\n", id);
+    }
+    
+}
+
 // taking input as from user    
 
 void takingInput(Student *stu,int n)
@@ -187,10 +257,11 @@ void menu(Student *stu){
     while (option)
     {
         int n;
-            printf("");
+            printf("\n");
             printf("---------Choose Option To Perform a Task------------------\n");
             printf("To Add Data choose 1\n");
             printf("To Display  Data choose 2\n");
+            printf("To search Result choose 3\n");
             scanf("%d",&option);
             if(option == 0){
                 break;
@@ -203,7 +274,13 @@ void menu(Student *stu){
                 calculateResult(stu,dataSize);
             }else if(option == 2){
                 printAllData(stu,dataSize);    
-            }else
+            }else if(option == 3){
+                printf("Enter Student ID: \n");
+                int id;
+                scanf("%d", &id);
+                searchById(stu, id);
+            }
+            else
             {
                 printf("Enter a correct option!!!");
             }
