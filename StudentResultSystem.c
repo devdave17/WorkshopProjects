@@ -50,7 +50,7 @@ void takingInput(Student *stu,int n)
         // the loop is used for inner array marks till (0-->4) 5 ele
         for (int j = 0; j < 5; j++)
         {
-            printf("\nEnter marks for %d Subject: ",i+1);
+            printf("\nEnter marks for %d Subject: ",j+1);
             scanf("%d",&stu[i].marks[j]);
         }
         
@@ -60,10 +60,11 @@ void takingInput(Student *stu,int n)
 
 void printAllData(Student *std, int n){
 
+    printf("---------------------------------------------------------------------------------\n");
+    printf("%-6s %-20.20s %-8.8s %-6s %-6s %-6s %-6s %-7s %-6s\n", "Id","Name","Batch","Grade","OS","DSA","CN","Maths","Progr.");
     for (int i = 0; i < n; i++)
     {
         printf("---------------------------------------------------------------------------------\n");
-        printf("%-6s %-20.20s %-8.8s %-6s %-6s %-6s %-6s %-7s %-6s\n", "Id","Name","Batch","Grade","OS","DSA","CN","Maths","Progr.");
         printf("%-6d %-20.20s %-8.8s %-6c %-6d %-6d %-6d %-7d %-6d\n", std[i].id,std[i].name,std[i].batch ,std[i].grade,std[i].marks[0],std[i].marks[1],std[i].marks[2],std[i].marks[3],std[i].marks[4]);
     } 
 }
