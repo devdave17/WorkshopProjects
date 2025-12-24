@@ -1,6 +1,6 @@
 #include <stdio.h>
 #define N 100
-#define dataSize sizeof(stu)/sizeof(stu[0])
+// #define dataSize sizeof(stu)/sizeof(stu[N])
 
 // there is an main Struture of an students
 typedef struct Student
@@ -39,11 +39,11 @@ void takingInput(Student *stu,int n)
         scanf("%d", &stu[i].id);
         getchar();   
 
-        printf("Enter Name of %d Student: ", i+1);
+        printf("Enter Name of  Student %d: ", i+1);
         fgets(stu[i].name, 50, stdin);
         removeNewline(stu[i].name);
 
-        printf("Enter Batch of %d Student: ", i+1);
+        printf("Enter Batch of  Student %d: ", i+1);
         fgets(stu[i].batch, 50, stdin);
         removeNewline(stu[i].batch);
 
@@ -51,8 +51,8 @@ void takingInput(Student *stu,int n)
         // the loop is used for inner array marks till (0-->4) 5 ele
         for (int j = 0; j < 5; j++)
         {
-            printf("\nEnter marks for %d Subject: ",j+1);
-            scanf("%.2f",&stu[i].marks[j]);
+            printf("\nEnter marks for %d Subject for Student : ",j+1);
+            scanf("%f",&stu[i].marks[j]);
         }
         
     }
@@ -75,25 +75,28 @@ void menu(Student *stu){
 
     int option=10;
 
-    printf("---------Choose Option To Perform a Task------------------\n");
-    printf("To Add Data choose 1\n");
-    printf("To Display  Data choose 2\n");
-    scanf("%d",&option);
+    
     
     while (option)
     {
+        int n;
+            printf("---------Choose Option To Perform a Task------------------\n");
+            printf("To Add Data choose 1\n");
+            printf("To Display  Data choose 2\n");
+            scanf("%d",&option);
             if(option == 0){
                 break;
             }else if (option == 1)
             {
-                int n;
                 printf("Enter number of sutdents: ");
                 scanf("%d",&n);
                 // this function will take input form user
                 takingInput(stu,n);
 
             }else if(option == 2){
-                printAllData(stu,dataSize);    
+                int dataSize = sizeof(stu)/sizeof(stu[0]);
+                printf("%d",dataSize);
+                printAllData(stu,n);    
             }else
             {
                 printf("Enter a correct option!!!");
