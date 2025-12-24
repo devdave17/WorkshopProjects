@@ -34,7 +34,7 @@ void takingInput(Student *stu,int n)
 {
     for (int i = 0; i < n; i++)
     {
-        printf("Enter Id of %d Student: ", i+1);
+        printf("Enter Id of Student %d: ", i+1);
         scanf("%d", &stu[i].id);
         getchar();   
 
@@ -80,12 +80,6 @@ int main(){
     // this function will take input form user
     takingInput(stu,n);
     printAllData(stu, n);
-    // assining the objects
-    // s1.id = 10;
-    // s1.grade = 'A';
-
-    // printf ("%d",s1.id);
-    // printf ("%d",s1.grade);
 
 
     return 0;
