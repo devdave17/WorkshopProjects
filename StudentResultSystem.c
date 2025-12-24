@@ -1,5 +1,5 @@
 #include <stdio.h>
-
+#include <string.h>
 
 // there is an main Struture of an students
 typedef struct Student
@@ -10,6 +10,7 @@ typedef struct Student
     int marks[5];
     float totalMarks;
     char grade;
+    int os, dsa, cn, maths, progr;
 } Student;
 
 void removeNewline(char *str)
@@ -26,9 +27,72 @@ void removeNewline(char *str)
     }
 }
 
+void defaultData( Student *stu){
+
+     stu[0].id = 202501;
+    strcpy(stu[0].name, "Musi");
+    strcpy(stu[0].batch, "MCA");
+    stu[0].grade = 'B';
+    stu[0].os = 80;
+    stu[0].dsa = 82;
+    stu[0].cn = 88;
+    stu[0].maths = 78;
+    stu[0].progr = 70;
+    stu[0].id = 202501;
 
 
-// taking input as from user
+    strcpy(stu[1].name, "Lusi");
+    strcpy(stu[1].batch, "MCA");
+    stu[1].grade = 'B';
+    stu[1].os = 80;
+    stu[1].dsa = 82;
+    stu[1].cn = 88;
+    stu[1].maths = 78;
+    stu[1].progr = 70;
+
+    stu[2].id = 202502;
+    strcpy(stu[2].name, "Jhon");
+    strcpy(stu[2].batch, "MCA");
+    stu[2].grade = 'B';
+    stu[2].os = 80;
+    stu[2].dsa = 82;
+    stu[2].cn = 95;
+    stu[2].maths = 85;
+    stu[2].progr = 70;
+
+    stu[3].id = 202503;
+    strcpy(stu[3].name, "Johny");
+    strcpy(stu[3].batch, "MCA");
+    stu[3].grade = 'A';
+    stu[3].os = 90;
+    stu[3].dsa = 92;
+    stu[3].cn = 95;
+    stu[3].maths = 85;
+    stu[3].progr = 90;
+
+    stu[4].id = 202504;
+    strcpy(stu[4].name, "Komal");
+    strcpy(stu[4].batch, "MCA");
+    stu[4].grade = 'B';
+    stu[4].os = 80;
+    stu[4].dsa = 82;
+    stu[4].cn = 95;
+    stu[4].maths = 86;
+    stu[4].progr = 65;
+
+    //  printf("---------------------------------------------------------------------------------\n");
+    //  printf("Id    Name        Batch   Grade   OS   DSA   CN   Maths   Progr.\n");
+                   
+    // for(int i = 1; i < 5; i++) {
+    //          printf("%-6d %-20.20s %-8.8s %-6c %-6d %-6d %-6d %-7d %-6d\n", stu[i].id,stu[i].name,stu[i].batch ,stu[i].grade,stu[i].os,stu[i].dsa,stu[i].cn,stu[i].maths,stu[i].progr);
+    // }
+    // printf("-------------------------------------------------------------------------------\n");
+    }
+
+    
+
+
+// taking input as from user    
 
 void takingInput(Student *stu,int n)
 {
@@ -73,12 +137,15 @@ int main(){
     int n;
     printf("Enter number of sutdents: ");
     scanf("%d",&n);
+
+    
     
     // here we creating the sutdent obj
      struct Student stu[n];
+    defaultData(stu);
 
     // this function will take input form user
-    takingInput(stu,n);
+    // takingInput(stu,n);
     printAllData(stu, n);
     // assining the objects
     // s1.id = 10;
