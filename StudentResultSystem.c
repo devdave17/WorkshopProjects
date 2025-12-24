@@ -179,11 +179,6 @@ void printAllData(Student *std, int n){
     printf("----------------------------------------------------------------------------------------------------------------\n");
 }
 
-void calculateResult(Student *std,int n){
-    int i,j;
-    float sum;
-    
-}
 
 void menu(Student *stu){
 
