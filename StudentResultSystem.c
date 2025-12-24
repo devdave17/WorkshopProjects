@@ -100,6 +100,54 @@ void menu(Student *stu){
             }
     }
 }
+void calculateResult(Student *std,int n){
+    int i,j;
+    float sum;
+    
+     float percentage[n];
+    
+
+    //total marks
+    for( i=0;i<n;i++){
+    sum=0;
+     for(int j=0;j<5;j++){
+     sum=sum+std[i].marks[j];
+     }
+     std[i].totalMarks=sum;
+     percentage[i]=sum/5;
+}
+    
+ for(int i=0;i<n;i++){
+   
+ } 
+ for(int i=0;i<n;i++){
+    if(percentage[i]>85 ){
+    std[i].grade='A';
+
+    }
+    else if(percentage[i]>70 ){
+        std[i].grade='B';
+
+    }
+   else if(percentage[i]>70 ){
+        std[i].grade='C';
+
+    }
+    else if(percentage[i]>55 ){
+        std[i].grade='D';
+
+    }
+    else if(percentage[i]>40 ){
+        std[i].grade='E';
+
+    }
+    else if(percentage[i]<33){
+        std[i].grade='F';
+
+    }
+    }
+
+}
 
 
 int main(){
