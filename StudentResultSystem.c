@@ -1,5 +1,5 @@
 #include <stdio.h>
-
+#define N 100
 
 // there is an main Struture of an students
 typedef struct Student
@@ -70,20 +70,48 @@ void printAllData(Student *std, int n){
 }
 
 
+void menu(Student *stu){
+    int option=10;
+
+    printf("---------Choose Option To Perform a Task------------------\n");
+    printf("To Add Data choose 1\n");
+    printf("To Display  Data choose 2\n");
+    scanf("%d",&option);
+    
+    while (option)
+    {
+            if(option == 0){
+                break;
+            }else if (option == 1)
+            {
+                int n;
+                printf("Enter number of sutdents: ");
+                scanf("%d",&n);
+                // this function will take input form user
+                takingInput(stu,n);
+
+            }else if(option == 2){
+                printAllData(stu,dataSize);    
+            }else
+            {
+                printf("Enter a correct option!!!");
+            }
+    }
+}
 
 
 int main(){
-    int n;
-    printf("Enter number of sutdents: ");
-    scanf("%d",&n);
+
+
+    
+
+    
     
     // here we creating the sutdent obj
-     struct Student stu[n];
+     struct Student stu[N];
 
-
-    // this function will take input form user
-    // takingInput(stu,n);
-    // printAllData(stu, n);    
+    menu(stu);
+    
 
 
     return 0;
