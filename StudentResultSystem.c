@@ -11,6 +11,7 @@ typedef struct Student
     char batch[50];
     float marks[5];
     float totalMarks;
+    float percentage;
     char grade;
 } Student;
 
@@ -128,10 +129,11 @@ void takingInput(Student *stu,int n)
     
 }
 
+
 void printAllData(Student *std, int n){
 
-    printf("---------------------------------------------------------------------------------\n");
-    printf("%-6s %-20.20s %-8.8s %-6s %-6s %-6s %-6s %-7s %-6s %-12s\n", "Id","Name","Batch","Grade","OS","DSA","CN","Maths","Progr.", "Total Marks");
+    printf("----------------------------------------------------------------------------------------------------------------\n");
+    printf("%-6s %-20.20s %-8.8s %-6s %-6s %-6s %-6s %-7s %-6s %-10s %-10s\n", "Id","Name","Batch","Grade","OS","DSA","CN","Maths","Progr.","totalMarks","percentage");
     for (int i = 0; i < n; i++)
     {
         printf("---------------------------------------------------------------------------------\n");
@@ -143,7 +145,7 @@ void calculateResult(Student *std,int n){
     int i,j;
     float sum;
     
-     float percentage[n];
+     
     
 
     //total marks
@@ -154,34 +156,32 @@ void calculateResult(Student *std,int n){
      }
      printf("%d \n", sum);
      std[i].totalMarks=sum;
-     percentage[i]=sum/5;
+     std[i].percentage=sum/5;
 }
     
+ 
  for(int i=0;i<n;i++){
-   
- } 
- for(int i=0;i<n;i++){
-    if(percentage[i]>85 ){
+    if(std[i].percentage>85 ){
     std[i].grade='A';
 
     }
-    else if(percentage[i]>70 ){
+    else if(std[i].percentage>70 ){
         std[i].grade='B';
 
     }
-   else if(percentage[i]>70 ){
+   else if(std[i].percentage>55 ){
         std[i].grade='C';
 
     }
-    else if(percentage[i]>55 ){
+    else if(std[i].percentage>40){
         std[i].grade='D';
 
     }
-    else if(percentage[i]>40 ){
+    else if(std[i].percentage>33){
         std[i].grade='E';
 
     }
-    else if(percentage[i]<33){
+    else if(std[i].percentage>0){
         std[i].grade='F';
 
     }
