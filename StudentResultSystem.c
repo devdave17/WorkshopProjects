@@ -240,14 +240,14 @@ void takingInput(Student *stu,int n)
 void printAllData(Student *std, int n){
 
     printf("----------------------------------------------------------------------------------------------------------------\n");
-    printf("%-6s %-20.20s %-8.8s %-6s %-6s %-6s %-6s %-7s %-6s %-10s %-10s\n", "Id","Name","Batch","Grade","OS","DSA","CN","Maths","Progr.","totalMarks","percentage");
+    printf("%-6s %-20.20s %-8.8s %-6s %-6s %-6s %-6s %-7s %-6s %-10s %-10s\n", "Id","Name","Batch","Grade","OS","DSA","CN","Maths","Progr.","TotalMarks","Percentage");
     for (int i = 0; i < n; i++)
     {
-        printf("----------------------------------------------------------------------------------------------------------------\n");
-        printf("%-6d %-20.20s %-8.8s %-6c %-6.2f %-6.2f %-6.2f %-7.2f %-6.2f %-6.2f\n", std[i].id,std[i].name,std[i].batch ,std[i].grade,std[i].marks[0],std[i].marks[1],std[i].marks[2],std[i].marks[3],std[i].marks[4], std[i].totalMarks);
+        printf("------------------------------------------------------------------------------------------------------------\n");
+        printf("%-6d %-20.20s %-8.8s %-6c %-6.2f %-6.2f %-6.2f %-7.2f %-6.2f %-10.2f %-15.1f\n", std[i].id,std[i].name,std[i].batch ,std[i].grade,std[i].marks[0],std[i].marks[1],std[i].marks[2],std[i].marks[3],std[i].marks[4], std[i].totalMarks),std[i].percentage;
     } 
+    printf("----------------------------------------------------------------------------------------------------------------\n");
 }
-
 
 
 void menu(Student *stu){
@@ -262,6 +262,7 @@ void menu(Student *stu){
             printf("To Add Data choose 1\n");
             printf("To Display  Data choose 2\n");
             printf("To search Result choose 3\n");
+            printf("To Exit choose 0\n");
             scanf("%d",&option);
             if(option == 0){
                 break;
@@ -282,7 +283,7 @@ void menu(Student *stu){
             }
             else
             {
-                printf("Enter a correct option!!!");
+                printf("Enter a correct option!!!!!!!!\n");
             }
     }
 }
