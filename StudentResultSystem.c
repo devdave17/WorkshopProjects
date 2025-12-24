@@ -7,7 +7,7 @@ typedef struct Student
     char name[50];
     int id;
     char batch[50];
-    int marks[5];
+    float marks[5];
     float totalMarks;
     char grade;
 } Student;
@@ -51,7 +51,7 @@ void takingInput(Student *stu,int n)
         for (int j = 0; j < 5; j++)
         {
             printf("\nEnter marks for %d Subject: ",j+1);
-            scanf("%d",&stu[i].marks[j]);
+            scanf("%.2f",&stu[i].marks[j]);
         }
         
     }
@@ -65,9 +65,12 @@ void printAllData(Student *std, int n){
     for (int i = 0; i < n; i++)
     {
         printf("---------------------------------------------------------------------------------\n");
-        printf("%-6d %-20.20s %-8.8s %-6c %-6d %-6d %-6d %-7d %-6d\n", std[i].id,std[i].name,std[i].batch ,std[i].grade,std[i].marks[0],std[i].marks[1],std[i].marks[2],std[i].marks[3],std[i].marks[4]);
+        printf("%-6d %-20.20s %-8.8s %-6c %-6f %-6f %-6f %-7f %-6f\n", std[i].id,std[i].name,std[i].batch ,std[i].grade,std[i].marks[0],std[i].marks[1],std[i].marks[2],std[i].marks[3],std[i].marks[4]);
     } 
 }
+
+
+
 
 int main(){
     int n;
@@ -77,9 +80,10 @@ int main(){
     // here we creating the sutdent obj
      struct Student stu[n];
 
+
     // this function will take input form user
-    takingInput(stu,n);
-    printAllData(stu, n);
+    // takingInput(stu,n);
+    // printAllData(stu, n);    
 
 
     return 0;
