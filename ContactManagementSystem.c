@@ -18,6 +18,7 @@ void removeNewline(char *str)
             break;
         }
         i++;
+        
     }
 }
 
