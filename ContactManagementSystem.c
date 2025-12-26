@@ -174,40 +174,57 @@ dataSize += 42;
 }
 
 
-void writeContactToFile(Contact *cont) {
-    file = fopen("contacts.txt", "w");
-    if(!file){
-        printf("Error opening file.\n");
-        return;
-    }
-
-    for(int i = 0; i < dataSize; i++){
-        fprintf(file, "%s %lld\n", cont[i].name, cont[i].phone);
-    }
-
-    fclose(file);
-
-   
-}
 
 
+// this is now only adding in dummpy data
 void addContact(Contact *cont,int n)
 {
-    for (int i=dataSize; i < n; i++)
+    for (int i=0; i < n; i++)
     { 
-        // cont[dataSize].name = (char*)malloc(50 * sizeof(char));
-
         printf("Enter phone of Contact %d: ", i+1);
         scanf("%d", &cont[dataSize].phone);
         getchar(); 
         printf("Enter Contact Name %d:", i+1);
         fgets(cont[dataSize].name,50,stdin);
         removeNewline(cont[dataSize].name);
+        // fprintf(file, "%s %lld\n", cont[i].name, cont[i].phone);
 
         dataSize++;
     }
 }
 
+void showContact(Contact *cont){
+
+    
+    printf("--------------------------------------------------\n");
+    printf("%-15s %-15s\n","Name","ContactNo");
+    printf("--------------------------------------------------\n");
+    for(int i=0;i<dataSize;i++){
+    printf("%-15s %-15lld\n",cont[i].name,cont[i].phone);
+    printf("--------------------------------------------------\n");
+    }
+}
+
+void writeContactToFile(Contact *cont,int n) {
+    file = fopen("contacts.txt", "w");
+    if(!file){
+        printf("Error opening file.\n");
+        return;
+    }
+
+    addContact(cont,n);
+
+    for (int i = 0; i < dataSize; i++)
+    {
+        fprintf(file, "%s %lld\n", cont[i].name, cont[i].phone);
+        // printf("%d",i);
+    }
+    
+
+
+    fclose(file);
+
+}
 
 
 void readContactFromFile(Contact *cont) {
@@ -224,8 +241,10 @@ void readContactFromFile(Contact *cont) {
         sprintf(cont[index].name, "%s", temp.name);
         cont[index].phone = temp.phone;
         index++;
-        dataSize++;
+        // dataSize++;
     }
+    
+    showContact(cont);
 
     // printf("\nReading from file:\n");
     // for (int i = 0; i < index; i++)
@@ -234,20 +253,6 @@ void readContactFromFile(Contact *cont) {
     // }
 
     fclose(file);
-}
-
-void showContact(Contact *cont){
-
-    
-    printf("--------------------------------------------------\n");
-    printf("%-15s %-15s\n","Name","ContactNo");
-    printf("--------------------------------------------------\n");
-    for(int i=0;i<dataSize;i++){
-    printf("%-15s %-15lld\n",cont[i].name,cont[i].phone);
-    printf("--------------------------------------------------\n");
-    }
-
-
 }
 
 
@@ -297,7 +302,7 @@ void menu(Contact *cont){
                 printf("Enter Number of Contacts to Add : ");
                 scanf("%d",&n);
                 // this function will take input form user
-                writeContactToFile(cont);
+                writeContactToFile(cont,n);
 
             }else if(option == 2){
                 // here need to put show function 
@@ -327,9 +332,7 @@ int main(){
         // FILE *file;
 
         // Data fill
-    
     addDummyData(Cont);
-    // defultData(Cont);
     menu(Cont);
     
     // ----- WRITE -----
