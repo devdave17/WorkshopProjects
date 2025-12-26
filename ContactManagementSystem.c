@@ -253,7 +253,7 @@ void readContactFromFile(Contact *cont) {
 }
 
 
-void EditContactNo(Contact *cont,int n){
+void EditContactNo(Contact *cont){
     long long int phoneNo;
     int flag=0;
     printf("enter contact number which you want to change: ");
@@ -272,6 +272,29 @@ void EditContactNo(Contact *cont,int n){
     }
     if(flag==0){
         printf("Unable to found the contact number.");
+    }
+
+}
+void searchContact(Contact *cont){
+     long long int phoneNo;
+    int flag=0;
+    printf("enter contact number which you want to search:");
+    scanf("%lld", &phoneNo);
+
+    for(int i=0;i<dataSize;i++){
+        if(phoneNo==cont[i].phone){
+             printf("..................................................\n");
+             printf("              CONTACT INFORMATION                 \n");
+             printf("..................................................\n");
+             printf("NAME:%-15s\n",cont[i].name);
+             printf("CONTACT NUMBER:%lld\n",cont[i].phone);
+             printf("..................................................\n");
+              flag=1;
+             break;
+        }
+    }
+    if(flag==0){
+        printf("***Unable to found the contact number***");
     }
 
 }
@@ -329,6 +352,7 @@ void menu(Contact *cont){
                 // showContact(cont);
             }else if(option == 3){
                 //here we need to put search function
+                searchContact(cont);
             }
             else if(option == 4){
                 printf("Enter Phone Number Delete: \n");
@@ -338,7 +362,7 @@ void menu(Contact *cont){
             }
             else if(option ==5 ){
                 //here we need to put edit function
-                EditContactNo(cont, n);
+                EditContactNo(cont);
                 writeContactToFile(cont, n); 
             }
             else
