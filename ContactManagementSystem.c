@@ -7,12 +7,40 @@
 // whenever we want to use long long simpliy type ll;
 typedef long long ll;
 
-int dataSize = 0;
-FILE *file;
-typedef struct Contact {
+typedef struct Contact{
     char name[50];
     long long int phone;
-} Contact;
+}Contact;
+
+// typedef struct Contact {
+//     char name[50];
+//     long long int phone;
+// } Contact;
+
+
+void removeNewline(char *str)
+{
+    int i = 0;
+    while (str[i] != '\0')
+    {
+        if (str[i] == '\n')
+        {
+            str[i] = '\0';
+            break;
+        }
+        i++;
+        
+    }
+}
+
+
+
+int dataSize = 0;
+
+
+FILE *file;
+
+
 
 void addDummyData(Contact *cont) {
 
@@ -141,8 +169,10 @@ sprintf(cont[40].name, "Omkar");
 
 cont[41].phone = 9000000041;
 sprintf(cont[41].name, "Pooja");
-dataSize+= 42;
+
+dataSize += 42;
 }
+
 
 void writeContactToFile(Contact *cont) {
     file = fopen("contacts.txt", "w");
@@ -157,22 +187,44 @@ void writeContactToFile(Contact *cont) {
 
     fclose(file);
 
-    file = fopen("contacts.txt", "r");
+   
+}
 
-    if(!file){
-        printf("Error opening file.\n");
-        return;
+
+void addContact(Contact *cont,int n)
+{
+    for (int i=dataSize; i < n; i++)
+    { 
+        // cont[dataSize].name = (char*)malloc(50 * sizeof(char));
+
+        printf("Enter phone of Contact %d: ", i+1);
+        scanf("%d", &cont[dataSize].phone);
+        getchar(); 
+        printf("Enter Contact Name %d:", i+1);
+        fgets(cont[dataSize].name,50,stdin);
+        removeNewline(cont[dataSize].name);
+
+        dataSize++;
     }
 }
+
+
 
 void readContactFromFile(Contact *cont) {
     Contact temp;
     int index = 0;
     
+    file = fopen("contacts.txt", "r");
+    if(!file){
+        printf("Error opening file.\n");
+        return;
+    }
+
     while(fscanf(file, "%s %lld", temp.name, &temp.phone) == 2){
         sprintf(cont[index].name, "%s", temp.name);
         cont[index].phone = temp.phone;
         index++;
+        dataSize++;
     }
 
     // printf("\nReading from file:\n");
@@ -180,24 +232,112 @@ void readContactFromFile(Contact *cont) {
     // {
     //     printf("Name: %s, Phone: %lld\n", cont[i].name, cont[i].phone);
     // }
+
     fclose(file);
-    }
+}
+
+void showContact(Contact *cont){
 
     
+    printf("--------------------------------------------------\n");
+    printf("%-15s %-15s\n","Name","ContactNo");
+    printf("--------------------------------------------------\n");
+    for(int i=0;i<dataSize;i++){
+    printf("%-15s %-15lld\n",cont[i].name,cont[i].phone);
+    printf("--------------------------------------------------\n");
+    }
 
-int main() {
 
-    FILE *file;
+}
 
-    Contact cont[N];
 
-    // Data fill
-   addDummyData(cont);
+
+
+void deleteCont(Contact *cont,int pNum){
+    // this N is only for now testing
+
+    int j ; 
+    for (int i = 0; i < dataSize; i++)
+    {   
+        if (pNum == cont[i].phone)
+        {
+            j = i;
+            printf("%s is Deleted with Phone Number %lld\n",cont[i].name,cont[i].phone);
+        }
+        
+    }
+    for ( j;j < dataSize; j++)
+    {
+        cont[j].phone = cont[j+1].phone; 
+        sprintf(cont[j].name ,"%s" ,cont[j+1].name);
+    }
+    dataSize--;    
+}
+
+
+void menu(Contact *cont){
+    int option=10;
+
+    while (option)
+    {
+            int n;
+            printf("\n");
+            printf("---------Choose Option To Perform a Task------------------\n");
+            printf("To Add New Contact choose 1\n");
+            printf("To Show Contact choose 2\n");
+            printf("To Search Contact choose 3\n");
+            printf("To Delete Contact choose 4\n");
+            printf("To Exit choose 0\n :--");
+            scanf("%d",&option);
+
+            if(option == 0){
+                break;
+            }else if (option == 1)
+            {
+                printf("Enter Number of Contacts to Add : ");
+                scanf("%d",&n);
+                // this function will take input form user
+                writeContactToFile(cont);
+
+            }else if(option == 2){
+                // here need to put show function 
+                readContactFromFile(cont);
+                // showContact(cont);
+            }else if(option == 3){
+                //here we need to put search function
+            }
+            else if(option == 4){
+                printf("Enter Phone Number Delete: \n");
+                ll pNum;
+                scanf("%d", &pNum);
+                deleteCont(cont, pNum);
+            }
+            else
+            {
+                printf("Enter a correct option!!!!!!!!\n");
+            }
+    }
+}
+
+
+int main(){
+
+    struct Contact Cont[N];
+
+        // FILE *file;
+
+        // Data fill
+    
+    addDummyData(Cont);
+    // defultData(Cont);
+    menu(Cont);
+    
     // ----- WRITE -----
-    writeContactToFile(cont);
+    // writeContactToFile(Cont);
 
     // ----- READ -----
-    readContactFromFile(cont);
+    // readContactFromFile(Cont);
+    
+    
 
-    return 0;
 }
