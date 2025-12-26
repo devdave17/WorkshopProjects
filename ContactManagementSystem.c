@@ -1,6 +1,6 @@
 #include<stdio.h>
 #include<string.h>
-#include <stdlib.h>
+#include<stdlib.h>
 
 #define N 100
 
@@ -12,10 +12,7 @@ typedef struct Contact{
     long long int phone;
 }Contact;
 
-// typedef struct Contact {
-//     char name[50];
-//     long long int phone;
-// } Contact;
+
 
 
 void removeNewline(char *str)
@@ -182,7 +179,7 @@ void addContact(Contact *cont,int n)
     for (int i=0; i < n; i++)
     { 
         printf("Enter phone of Contact %d: ", i+1);
-        scanf("%d", &cont[dataSize].phone);
+        scanf("%lld", &cont[dataSize].phone);
         getchar(); 
         printf("Enter Contact Name %d:", i+1);
         fgets(cont[dataSize].name,50,stdin);
@@ -256,7 +253,28 @@ void readContactFromFile(Contact *cont) {
 }
 
 
+void EditContactNo(Contact *cont,int n){
+    long long int phoneNo;
+    int flag=0;
+    printf("enter contact number which you want to change: ");
+    scanf("%lld", &phoneNo);
 
+    for(int i=0;i<dataSize;i++){
+        if(phoneNo==cont[i].phone){
+            long long int newNo;
+            printf("enter new contact number:");
+            scanf("%lld", &newNo);
+              flag=1;
+            cont[i].phone=newNo;
+            // printf("Updated: %lld\n", cont[i].phone);
+            break;
+        }
+    }
+    if(flag==0){
+        printf("Unable to found the contact number.");
+    }
+
+}
 
 void deleteCont(Contact *cont,int pNum){
     // this N is only for now testing
@@ -292,6 +310,7 @@ void menu(Contact *cont){
             printf("To Show Contact choose 2\n");
             printf("To Search Contact choose 3\n");
             printf("To Delete Contact choose 4\n");
+            printf("To edit Contact choose 5\n");
             printf("To Exit choose 0\n :--");
             scanf("%d",&option);
 
@@ -317,6 +336,11 @@ void menu(Contact *cont){
                 scanf("%d", &pNum);
                 deleteCont(cont, pNum);
             }
+            else if(option ==5 ){
+                //here we need to put edit function
+                EditContactNo(cont, n);
+                writeContactToFile(cont, n); 
+            }
             else
             {
                 printf("Enter a correct option!!!!!!!!\n");
@@ -334,6 +358,7 @@ int main(){
         // Data fill
     addDummyData(Cont);
     menu(Cont);
+    
     
     // ----- WRITE -----
     // writeContactToFile(Cont);
