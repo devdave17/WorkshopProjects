@@ -1,5 +1,7 @@
 #include<stdio.h>
 #include<string.h>
+#include <stdlib.h>
+
 #define N 100
 
 // whenever we want to use long long simpliy type ll;
@@ -25,8 +27,8 @@ void removeNewline(char *str)
     }
 }
 
-
 int defultContSize = 0;
+
 
 void defultData(Contact *cont){
 
@@ -45,23 +47,25 @@ void defultData(Contact *cont){
     defultContSize = 4;
 }
 
-
-
+int dataSize = 0;
 
 void addContact(Contact *cont,int n)
 {
     for (int i=0; i < n; i++)
     { 
+        cont[dataSize].name = (char*)malloc(50 * sizeof(char));
+
         printf("Enter phone of Contact %d: ", i+1);
-        scanf("%d", &cont[defultContSize].phone);
+        scanf("%d", &cont[dataSize].phone);
         getchar(); 
         printf("Enter Contact Name %d:", i+1);
-        fgets(cont[defultContSize].name,50,stdin);
-        removeNewline(cont[defultContSize].name);
+        fgets(cont[dataSize].name,50,stdin);
+        removeNewline(cont[dataSize].name);
 
-        defultContSize++;
+        dataSize++;
     }
 }
+
 
 void deleteCont(Contact *cont,int pNum){
     // this N is only for now testing
@@ -137,7 +141,6 @@ int main(){
     menu(Cont);
 
     // this is only tesing purpose
-
     
 
 }
