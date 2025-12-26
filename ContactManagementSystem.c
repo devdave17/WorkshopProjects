@@ -27,7 +27,12 @@ void removeNewline(char *str)
     }
 }
 
-int defultContSize = 0;
+
+
+
+
+
+int dataSize = 0;
 
 
 void defultData(Contact *cont){
@@ -44,10 +49,10 @@ void defultData(Contact *cont){
     cont[3].name = "kajal";
     cont[3].phone = 1234567893;
 
-    defultContSize = 4;
+    dataSize = 4;
+
 }
 
-int dataSize = 0;
 
 void addContact(Contact *cont,int n)
 {
@@ -64,6 +69,20 @@ void addContact(Contact *cont,int n)
 
         dataSize++;
     }
+}
+
+void showContact(Contact *cont){
+
+    
+    printf("--------------------------------------------------\n");
+    printf("%-15s %-15s\n","Name","ContactNo");
+    printf("--------------------------------------------------\n");
+    for(int i=0;i<dataSize;i++){
+    printf("%-15s %-15lld\n",cont[i].name,cont[i].phone);
+    printf("--------------------------------------------------\n");
+    }
+
+
 }
 
 
@@ -114,8 +133,10 @@ void menu(Contact *cont){
                 // this function will take input form user
                 addContact(cont,n);
 
-            }else if(option == 2){
-                // here need to put show function    
+               
+              }else if(option == 2){
+                // here need to put show function 
+                showContact(cont);
             }else if(option == 3){
                 //here we need to put search function
             }
