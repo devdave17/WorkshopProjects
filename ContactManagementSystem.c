@@ -348,6 +348,7 @@ void menu(Contact *cont){
     {
             int n;
             printf("\n");
+            printf("---------Welcome To Contacts Management System------------------\n");
             printf("---------Choose Option To Perform a Task------------------\n");
             printf("To Add New Contact choose 1\n");
             printf("To Show Contact choose 2\n");
@@ -400,7 +401,6 @@ int main(){
         // Data fill
     addDummyData(Cont);
     menu(Cont);
-
 
     return 0;
 }

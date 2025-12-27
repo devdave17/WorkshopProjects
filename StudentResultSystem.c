@@ -254,6 +254,8 @@ void menu(Student *stu){
     {
         int n;
             printf("\n");
+
+            printf("---------Welcome to Studnet Result Management System------------------\n");
             printf("---------Choose Option To Perform a Task------------------\n");
             printf("To Add Data choose 1\n");
             printf("To Display  Data choose 2\n");
