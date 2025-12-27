@@ -184,8 +184,6 @@ void addContact(Contact *cont,int n)
         printf("Enter Contact Name %d:", i+1);
         fgets(cont[dataSize].name,50,stdin);
         removeNewline(cont[dataSize].name);
-        // fprintf(file, "%s %lld\n", cont[i].name, cont[i].phone);
-
         dataSize++;
     }
 }
@@ -217,8 +215,6 @@ void writeContactToFile(Contact *cont,int n) {
         // printf("%d",i);
     }
     
-
-
     fclose(file);
 
 }
@@ -243,28 +239,30 @@ void readContactFromFile(Contact *cont) {
     
     showContact(cont);
 
-    // printf("\nReading from file:\n");
-    // for (int i = 0; i < index; i++)
-    // {
-    //     printf("Name: %s, Phone: %lld\n", cont[i].name, cont[i].phone);
-    // }
-
     fclose(file);
 }
 
 
 void EditContactNo(Contact *cont){
-    long long int phoneNo;
+
+    file = fopen("contats.txt","w");
+
+    if(!file){
+        printf("Error opening file.\n");
+        return;
+    }
+
+    ll phoneNo;
     int flag=0;
     printf("enter contact number which you want to change: ");
     scanf("%lld", &phoneNo);
 
     for(int i=0;i<dataSize;i++){
         if(phoneNo==cont[i].phone){
-            long long int newNo;
+            ll newNo;
             printf("enter new contact number:");
             scanf("%lld", &newNo);
-              flag=1;
+            flag=1;
             cont[i].phone=newNo;
             // printf("Updated: %lld\n", cont[i].phone);
             break;
@@ -273,24 +271,31 @@ void EditContactNo(Contact *cont){
     if(flag==0){
         printf("Unable to found the contact number.");
     }
-
+    for (int i = 0; i < dataSize; i++)
+    {
+        fprintf(file, "%s %lld\n", cont[i].name, cont[i].phone);
+    }
+    
+    
+    fclose(file);
 }
+
 void searchContact(Contact *cont){
-     long long int phoneNo;
+    ll phoneNo;
     int flag=0;
     printf("enter contact number which you want to search:");
     scanf("%lld", &phoneNo);
 
     for(int i=0;i<dataSize;i++){
         if(phoneNo==cont[i].phone){
-             printf("..................................................\n");
-             printf("              CONTACT INFORMATION                 \n");
-             printf("..................................................\n");
-             printf("NAME:%-15s\n",cont[i].name);
-             printf("CONTACT NUMBER:%lld\n",cont[i].phone);
-             printf("..................................................\n");
-              flag=1;
-             break;
+            printf("..................................................\n");
+            printf("              CONTACT INFORMATION                 \n");
+            printf("..................................................\n");
+            printf("NAME:%-15s\n",cont[i].name);
+            printf("CONTACT NUMBER:%lld\n",cont[i].phone);
+            printf("..................................................\n");
+            flag=1;
+            break;
         }
     }
     if(flag==0){
@@ -301,6 +306,12 @@ void searchContact(Contact *cont){
 
 void deleteCont(Contact *cont,int pNum){
     // this N is only for now testing
+    int idx= 0;
+    file = fopen("contacts.txt", "w");
+    if(!file){
+        printf("Error opening file.\n");
+        return;
+    }
 
     int j ; 
     for (int i = 0; i < dataSize; i++)
@@ -318,8 +329,16 @@ void deleteCont(Contact *cont,int pNum){
         sprintf(cont[j].name ,"%s" ,cont[j+1].name);
     }
     dataSize--;    
-}
 
+    for (int i = 0; i < dataSize; i++)
+    {
+        fprintf(file, "%s %lld\n", cont[i].name, cont[i].phone);
+        // printf("%d",i);
+    }
+
+    
+    fclose(file);
+}
 
 void menu(Contact *cont){
     int option=10;
@@ -333,7 +352,7 @@ void menu(Contact *cont){
             printf("To Show Contact choose 2\n");
             printf("To Search Contact choose 3\n");
             printf("To Delete Contact choose 4\n");
-            printf("To edit Contact choose 5\n");
+            printf("To Edit Contact choose 5\n");
             printf("To Exit choose 0\n :--");
             scanf("%d",&option);
 
@@ -360,10 +379,9 @@ void menu(Contact *cont){
                 scanf("%d", &pNum);
                 deleteCont(cont, pNum);
             }
-            else if(option ==5 ){
+            else if(option == 5  ){
                 //here we need to put edit function
                 EditContactNo(cont);
-                writeContactToFile(cont, n); 
             }
             else
             {
@@ -382,14 +400,7 @@ int main(){
         // Data fill
     addDummyData(Cont);
     menu(Cont);
-    
-    
-    // ----- WRITE -----
-    // writeContactToFile(Cont);
 
-    // ----- READ -----
-    // readContactFromFile(Cont);
-    
-    
 
+    return 0;
 }
