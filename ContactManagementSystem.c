@@ -13,6 +13,9 @@ typedef struct Contact{
 }Contact;
 
 
+int dataSize = 0;
+
+FILE *file;
 
 
 void removeNewline(char *str)
@@ -32,10 +35,6 @@ void removeNewline(char *str)
 
 
 
-int dataSize = 0;
-
-
-FILE *file;
 
 
 
@@ -243,39 +242,39 @@ void readContactFromFile(Contact *cont) {
 }
 
 
-void EditContactNo(Contact *cont){
+void editContactNo(Contact *cont){
 
-    file = fopen("contats.txt","w");
+    ll phoneNo;
+    int flag=0;
+    file = fopen("contacts.txt","w");
 
     if(!file){
         printf("Error opening file.\n");
         return;
     }
 
-    ll phoneNo;
-    int flag=0;
-    printf("enter contact number which you want to change: ");
+    printf("Enter Phone number which you want to change: ");
     scanf("%lld", &phoneNo);
 
     for(int i=0;i<dataSize;i++){
         if(phoneNo==cont[i].phone){
             ll newNo;
-            printf("enter new contact number:");
+            printf("Enter New Phone Number:");
             scanf("%lld", &newNo);
             flag=1;
             cont[i].phone=newNo;
-            // printf("Updated: %lld\n", cont[i].phone);
-            break;
+            printf("Number is Updated with : %lld\n", cont[i].phone);
         }
     }
     if(flag==0){
         printf("Unable to found the contact number.");
     }
+
+    showContact(cont);
     for (int i = 0; i < dataSize; i++)
     {
         fprintf(file, "%s %lld\n", cont[i].name, cont[i].phone);
     }
-    
     
     fclose(file);
 }
@@ -283,7 +282,7 @@ void EditContactNo(Contact *cont){
 void searchContact(Contact *cont){
     ll phoneNo;
     int flag=0;
-    printf("enter contact number which you want to search:");
+    printf("Enter Phone number which you want to Search:");
     scanf("%lld", &phoneNo);
 
     for(int i=0;i<dataSize;i++){
@@ -304,9 +303,12 @@ void searchContact(Contact *cont){
 
 }
 
-void deleteCont(Contact *cont,int pNum){
-    // this N is only for now testing
+void deleteCont(Contact *cont){
+    ll pNum;
     int idx= 0;
+    printf("Enter Phone Number Delete : ");
+    scanf("%d", &pNum);
+    
     file = fopen("contacts.txt", "w");
     if(!file){
         printf("Error opening file.\n");
@@ -333,7 +335,6 @@ void deleteCont(Contact *cont,int pNum){
     for (int i = 0; i < dataSize; i++)
     {
         fprintf(file, "%s %lld\n", cont[i].name, cont[i].phone);
-        // printf("%d",i);
     }
 
     
@@ -374,14 +375,13 @@ void menu(Contact *cont){
                 searchContact(cont);
             }
             else if(option == 4){
-                printf("Enter Phone Number Delete: \n");
-                ll pNum;
-                scanf("%d", &pNum);
-                deleteCont(cont, pNum);
+                
+                
+                deleteCont(cont);
             }
             else if(option == 5  ){
                 //here we need to put edit function
-                EditContactNo(cont);
+                editContactNo(cont);
             }
             else
             {
@@ -395,7 +395,7 @@ int main(){
 
     struct Contact Cont[N];
 
-        // FILE *file;
+        FILE *file;
 
         // Data fill
     addDummyData(Cont);
