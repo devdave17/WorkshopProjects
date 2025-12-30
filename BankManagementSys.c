@@ -2,17 +2,33 @@
 #include<string.h>
 #define N 100
 
+// int dataSize=0;
+// typedef struct BankDetail{
+//     long long int acNo;
+//     char name[50];
+//     int age;
+//     char address[50];
+//     long long int phone;
+//     double InitialBal;
+//     double CurrentBal;
+//     int NoOfTrans;
+// }BankDetail;
+typedef long long int ll;
 int dataSize=0;
 typedef struct BankDetail{
-    long long int acNo;
+    ll acNo;
     char name[50];
     int age;
-    char address[50];
-    long long int phone;
-    double InitialBal;
+    ll phone;
+    double IntialBal;
     double CurrentBal;
+    int Trans[N];
+    char accType[20];
     int NoOfTrans;
+    
+
 }BankDetail;
+
 
 void RemoveNewLine(char *str){
     int i=0;
@@ -27,139 +43,164 @@ void RemoveNewLine(char *str){
 
 void defautltData(BankDetail *info){
 
-info[0].acNo = 56789567867LL;
+info[0].acNo = 56789567867;
 strcpy(info[0].name,"Maya");
-info[0].age = 44;
-info[0].phone = 9870988907LL;
+info[0].age = 45;
+info[0].phone = 9870988907;
+sprintf(info[0].accType,"saving");
 
-info[1].acNo = 100123456790LL;    
+info[1].acNo = 100123456790;    
 strcpy(info[1].name,"Ravi");
 info[1].age = 32;
-info[1].phone = 9870988908LL;
+info[1].phone = 9870988908;
+sprintf(info[0].accType,"ccurrent");
 
-info[2].acNo = 100123456791LL;
+info[2].acNo = 100123456791;
 strcpy(info[2].name,"Anita");
 info[2].age = 29;
-info[2].phone = 9870988909LL;
+info[2].phone = 9870988909;
+sprintf(info[0].accType,"saving");
 
-info[3].acNo = 100123456792LL;
+info[3].acNo = 100123456792;
 strcpy(info[3].name,"Suresh");
 info[3].age = 51;
-info[3].phone = 9870988910LL;
+info[3].phone = 9870988910;
+sprintf(info[0].accType,"current");
 
-info[4].acNo = 100123456795LL;
+info[4].acNo = 10012345679;
 strcpy(info[4].name,"Pooja");
 info[4].age = 24;
-info[4].phone = 9870988911LL;
+info[4].phone = 9870988911;
+sprintf(info[0].accType,"saving");
 
-info[5].acNo = 100123456794LL;
+info[5].acNo = 100123456794;
 strcpy(info[5].name,"Amit");
 info[5].age = 36;
-info[5].phone = 9870988912LL;
+info[5].phone = 9870988912;
+sprintf(info[0].accType,"current");
 
-info[6].acNo = 100123456795LL;
+info[6].acNo = 100123456795;
 strcpy(info[6].name,"Neha");
 info[6].age = 27;
-info[6].phone = 9870988913LL;
+info[6].phone = 9870988913;
+sprintf(info[0].accType,"saving");
 
-info[7].acNo = 100123456796LL;
+info[7].acNo = 100123456796;
 strcpy(info[7].name,"Rahul");
 info[7].age = 41;
-info[7].phone = 9870988914LL;
+info[7].phone = 9870988914;
+sprintf(info[0].accType,"current");
 
-info[8].acNo = 100123456797LL;
+info[8].acNo = 10012345679;
 strcpy(info[8].name,"Kiran");
 info[8].age = 34;
-info[8].phone = 9870988915LL;
+info[8].phone = 9870988915;
+sprintf(info[0].accType,"saving");
 
-info[9].acNo = 100123456798LL;
+info[9].acNo = 100123456798;
 strcpy(info[9].name,"Sunita");
 info[9].age = 48;
 info[9].phone = 9870988916;
+sprintf(info[0].accType,"saving");
 
-info[10].acNo = 100123456799LL;
+info[10].acNo = 100123456799;
 strcpy(info[10].name,"Vikas");
 info[10].age = 26;
 info[10].phone = 9870988917;
+sprintf(info[0].accType,"current");
 
-info[11].acNo = 100123456800LL;
+info[11].acNo = 100123456800;
 strcpy(info[11].name,"Rina");
 info[11].age = 31;
 info[11].phone = 9870988918;
+sprintf(info[0].accType,"saving");
 
-info[12].acNo = 100123456801LL;
+info[12].acNo = 100123456801;
 strcpy(info[12].name,"Deepak");
 info[12].age = 45;
 info[12].phone = 9870988919;
+sprintf(info[0].accType,"saving");
 
-info[13].acNo = 100123456802LL;
+info[13].acNo = 100123456802;
 strcpy(info[13].name,"Kavita");
 info[13].age = 28;
 info[13].phone = 9870988920;
+sprintf(info[0].accType,"current");
 
-info[14].acNo = 100123456803LL;
+info[14].acNo = 100123456803;
 strcpy(info[14].name,"Manoj");
 info[14].age = 39;
 info[14].phone = 9870988921;
+sprintf(info[0].accType,"saving");
 
 info[15].acNo = 100123456804;
 strcpy(info[15].name,"Priya");
 info[15].age = 23;
 info[15].phone = 9870988922;
+sprintf(info[0].accType,"current");
 
-info[16].acNo = 100123456805LL;
+info[16].acNo = 100123456805;
 strcpy(info[16].name,"Nitin");
 info[16].age = 52;
 info[16].phone = 9870988923;
 
-info[17].acNo = 100123456806LL;
+info[17].acNo = 100123456806;
 strcpy(info[17].name,"Sneha");
 info[17].age = 30;
 info[17].phone = 9870988924;
+sprintf(info[0].accType,"current");
 
-info[18].acNo = 100123456807LL;
+info[18].acNo = 100123456807;
 strcpy(info[18].name,"Arjun");
 info[18].age = 35;
 info[18].phone = 9870988925;
+sprintf(info[0].accType,"saving");
 
-info[19].acNo = 100123456808LL;
+info[19].acNo = 100123456808;
 strcpy(info[19].name,"Meena");
 info[19].age = 47;
 info[19].phone = 9870988926;
+sprintf(info[0].accType,"saving");
 
-info[20].acNo = 100123456809LL;
+info[20].acNo = 100123456809;
 strcpy(info[20].name,"Rohit");
 info[20].age = 22;
 info[20].phone = 9870988927;
+sprintf(info[0].accType,"current");
 
-info[21].acNo = 100123456810LL;
+info[21].acNo = 100123456810;
 strcpy(info[21].name,"Nisha");
 info[21].age = 33;
 info[21].phone = 9870988928;
+sprintf(info[0].accType,"saving");
 
-info[22].acNo = 100123456811LL;
+info[22].acNo = 100123456811;
 strcpy(info[22].name,"Sanjay");
 info[22].age = 40;
 info[22].phone = 9870988929;
+sprintf(info[0].accType,"current");
 
-info[23].acNo = 100123456812LL;
+info[23].acNo = 100123456812;
 strcpy(info[23].name,"Asha");
 info[23].age = 38;
 info[23].phone = 9870988930;
+sprintf(info[0].accType,"saving");
 
-info[24].acNo = 100123456813LL;
+info[24].acNo = 100123456813;
 strcpy(info[24].name,"Vinod");
 info[24].age = 55;
-info[24].phone = 9870988931LL;
+info[24].phone = 9870988931;
+sprintf(info[0].accType,"current");
 
-info[25].acNo = 100123456814LL;
+info[25].acNo = 100123456814;
 strcpy(info[25].name,"Rekha");
 info[25].age = 43;
 info[25].phone = 9870988932LL;
+sprintf(info[0].accType,"current");
 
 
 for(int i = 0;i<25;i++){
-    info[i].InitialBal = 1000.0;
+    info[i].IntialBal= 1000.0;
     info[i].CurrentBal = 1000.0;
     info[i].NoOfTrans = 0;
 }
@@ -190,10 +231,11 @@ void takinginput(BankDetail *info,int n){
     fgets(info[dataSize].name, 50, stdin);
     RemoveNewLine(info[dataSize].name);
 
-    printf("enter address:");
-    fgets(info[dataSize].address, 50, stdin);
-    RemoveNewLine(info[dataSize].address);
-    printf("\n");
+    printf("enter account type:");
+    fgets(info[dataSize].accType, 50, stdin);
+    RemoveNewLine(info[dataSize].accType);
+
+
 
     info[dataSize].NoOfTrans = 0;
     info[dataSize].CurrentBal = 0.0;
