@@ -302,10 +302,10 @@ void WithdrawlMoney(BankDetail *info,int n){
 
 void printfData(BankDetail *info,int n){
 printf("----------------------------------------------------------------------------\n");
-printf("%-20s %-20s %-8s %-15s %10s\n","AccountNo." ,"Name","Age","Phone","Balance");
+printf("%-20s %-20s %-8s %-15s \n","AccountNo." ,"Name","Age","Phone");
 printf("----------------------------------------------------------------------------\n");
 for(int i=0;i<n;i++){
-printf("%-20lld %-20s %-8d %-15lld %-20.2lf\n",info[i].acNo,info[i].name,info[i].age,info[i].phone,info[i].CurrentBal);
+printf("%-20lld %-20s %-8d %-15lld \n",info[i].acNo,info[i].name,info[i].age,info[i].phone);
 printf("----------------------------------------------------------------------------\n");
 }
 
@@ -348,7 +348,7 @@ void menu(BankDetail *info){
             printf("To show account balance 6\n");
             printf("To update account detail 7\n");
             printf("To delete account 8\n");
-            printf("To know transaction history 9");
+            printf("To know transaction history 9\n");
             //login system
             printf("To Exit choose 0\n");
             printf("Enter:");
@@ -377,10 +377,10 @@ void menu(BankDetail *info){
             WithdrawlMoney(info,dataSize);
             }
             else if(option == 6){
-                printfData(info,dataSize);
+               
             }
             else if(option == 9){
-                printfData(info,dataSize);
+                // printfData(info,dataSize);
             }
             else if(option == 0){
             break;
