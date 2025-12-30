@@ -353,42 +353,41 @@ void menu(BankDetail *info){
             printf("To Exit choose 0\n");
             printf("Enter:");
             scanf("%d",&option);
-            if(option == 0){
-                break;
-            }else if (option == 1)
-            {
-                printf("Enter number of sutdents: ");
-                scanf("%d",&n);
-                // this function will take input form user
-                takinginput(info,n);
-                printfData(info,dataSize);
+            switch(option){
+            case 0:break;
+            case 1:
+             printf("Enter number of sutdents: ");
+               scanf("%d",&n);
+             // this function will take input form user
+              takinginput(info,n);
+              printfData(info,dataSize);
+              break;
                  
-            }else if(option == 2){
+        case 2:
                 // defautltData(info,n);
-                 printfData(info,dataSize); 
-            }
-             else if(option == 3){
-             search(info,dataSize);
-            }
-            else if(option == 4){
-              depositMoney(info,dataSize);
-            }
-            else if(option == 5){
-            WithdrawlMoney(info,dataSize);
-            }
-            else if(option == 6){
-               
-            }
-            else if(option == 9){
-                // printfData(info,dataSize);
-            }
-            else if(option == 0){
+                printfData(info,dataSize); 
+                break;
+            
+       case 3:
+               search(info,dataSize);
+               break;
+   
+       case 4:
+          depositMoney(info,dataSize);
+          break;
+        
+      case 5:
+       WithdrawlMoney(info,dataSize);
             break;
-            }
-            else{
-            printf("Enter correct option\n");
-        }
+      case 6:
+         case 7:
+         case 8:
+         case 9:
+       
+        default: printf("Enter correct option\n");
+        
     }
+ } 
 }
 
 
